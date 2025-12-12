@@ -1,0 +1,89 @@
+/* ===== STYLE CHUNG (gọn, giữ chức năng) ===== */
+:root{
+  --bg:#181a1a;
+  --primary:#ff8a00;
+  --accent:#4da3ff;
+  --card:#1f2122;
+  --muted:#9aa3a6;
+  --text:#e8ecec;
+}
+
+/* reset + body */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;;color:var(--text);font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;line-height:1.45}
+body{padding:24px 0}
+
+/* container trung tâm */
+.container, .page-center, .container-center, .center-box{
+  width:95%; max-width:1100px; margin:0 auto; padding:0 12px; text-align:center;
+}
+
+/* header/logo */
+.header{display:flex;align-items:center;justify-content:center;gap:18px;padding:18px 0}
+.header img{max-width:420px;height:auto;display:block}
+
+/* nav/menu */
+nav, .menu, .header-nav{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:8px 0 20px}
+nav a, .menu a, .header-nav a, a.menu-link{
+  display:inline-block;padding:8px 12px;border-radius:8px;text-decoration:none;color:var(--accent);font-weight:600;
+}
+nav a:hover, .menu a:hover{background:rgba(77,163,255,0.08);color:#fff;transform:translateY(-2px)}
+
+/* headings */
+h1,h2,h3,h4{text-align:center}
+
+/* content wrapper */
+.content, table, form, .main, .article{margin:12px auto;max-width:980px;padding:6px}
+
+/* table */
+table{width:100%;border-collapse:collapse;background:transparent;color:var(--text); margin:12px auto}
+table th, table td{padding:12px;border-bottom:1px solid rgba(255,255,255,0.04);text-align:left;vertical-align:middle}
+table thead th{background:rgba(255,255,255,0.02);font-weight:700;color:#dbeeff}
+
+/* images */
+img{max-width:100%;height:auto;display:block}
+
+/* inputs/buttons */
+input[type="text"], input[type="number"], select, textarea{
+  display:block;margin:8px auto;padding:8px;border-radius:6px;border:1px solid rgba(255,255,255,0.06);
+  background:rgba(255,255,255,0.02);color:var(--text);width:80%;max-width:520px;
+}
+select{width:100%;max-width:100%;padding:10px;border-radius:6px;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);color:var(--text)}
+button, input[type="submit"], .btn{padding:8px 12px;border-radius:8px;border:0;background:var(--primary);color:#111;font-weight:700;cursor:pointer}
+.btn.secondary{background:transparent;border:1px solid rgba(255,255,255,0.08);color:#cfe8ff}
+
+/* list không dấu chấm (bỏ cho toàn site) */
+ul, li, ol { list-style: none !important; padding-left:0; margin-left:0 }
+
+/* product-detail */
+.product-detail{display:flex;gap:32px;align-items:flex-start;justify-content:center;margin:28px auto;max-width:1100px;padding:18px}
+@media (max-width:900px){ .product-detail{flex-direction:column;padding:12px} }
+.pd-image{flex:0 0 420px;display:flex;align-items:center;justify-content:center}
+.pd-image img{max-width:100%;width:420px;border-radius:8px;box-shadow:0 6px 18px rgba(0,0,0,0.6);background:#222}
+.pd-info{flex:1 1 480px;min-width:260px;text-align:left}
+.pd-title{font-size:28px;font-weight:700;margin-bottom:12px;color:var(--primary)}
+.pd-price{margin:10px 0 18px;font-size:18px;display:flex;gap:12px;align-items:center}
+.pd-price .old{color:#bbb;text-decoration:line-through;opacity:0.8;font-size:16px}
+.pd-price .new{color:#fff;font-weight:700;font-size:20px}
+.pd-discount{background:rgba(255,120,0,0.12);color:#ffb366;padding:4px 8px;border-radius:6px;font-size:13px}
+.pd-desc{margin:14px 0;color:#ddd;line-height:1.5}
+
+/* căn giữa form / table / inputs (bài 1-4) */
+form{margin:12px auto;width:fit-content;padding:10px}
+input[type="text"], input[type="number"], select{display:block;margin:10px auto;padding:8px;width:80%;max-width:320px}
+button,input[type="submit"]{display:block;margin:15px auto;padding:8px 16px;border-radius:6px}
+
+/* chống table full-width ép mất bố cục */
+table{margin-left:auto !important;margin-right:auto !important;width:auto !important;max-width:95%}
+
+/* style nhỏ responsive */
+@media (max-width:600px){
+  body{padding:12px 0}
+  .container{width:96%}
+  nav a{padding:6px 8px;font-size:15px}
+  input[type="text"], select, textarea{width:92%}
+  .pd-image img{width:100%;max-width:420px}
+}
+
+/* nhỏ gọn cho lớp bài3/bài4 (nếu bạn dùng class trên body hoặc wrapper) */
+.bai3, .bai4 { text-align:center }
