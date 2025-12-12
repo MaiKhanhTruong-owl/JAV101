@@ -1,0 +1,164 @@
+@charset "UTF-8";
+/* base.css — shared design tokens, reset, form control standardization */
+#id, #name {
+		
+	display: block !important;
+	width: 100% !important;
+	box-sizing: border-box !important;
+	min-height: var(--ov-field-min-h) !important;
+	/* Visuals */
+	background: var(--ov-field-bg) !important;
+	color: inherit !important;
+	font-size: 14px !important;
+	line-height: 1.2 !important;
+	padding: var(--ov-field-padding-y) var(--ov-field-padding-x) !important;
+	/* Border: override inset/UA styling */
+	border-style: solid !important;
+	border-width: 1px !important;
+	border-color: var(--ov-field-border) !important;
+	border-radius: var(--ov-field-radius) !important;
+	/* Remove weird shadows from UA */
+	box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04) !important;
+	outline: none !important;
+	/* Smooth transitions */
+	transition: box-shadow .14s ease, border-color .12s ease !important;
+}
+/* Design tokens */
+:root{
+  --sidebar-width: 260px;
+  --page-bg: linear-gradient(180deg,#f4f7fb,#eef4fb);
+  --card-bg: #ffffff;
+  --muted: #6b7280;
+  --text: #0f172a;
+  --accent: #2563eb;
+  --danger: #ef4444;
+
+  --field-bg: #fff;
+  --field-border: rgba(15,23,42,0.06);
+  --field-border-focus: rgba(37,99,235,0.22);
+  --field-radius: 10px;
+  --field-padding-y: 10px;
+  --field-padding-x: 12px;
+  --field-min-h: 40px;
+  --field-shadow: 0 1px 2px rgba(15,23,42,0.04);
+  --container-w: 1200px;
+}
+
+/* Global reset & typography */
+* { box-sizing: border-box; }
+html,body { height:100%; }
+body {
+  margin:0;
+  font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  color:var(--text);
+  background:var(--page-bg);
+  min-height:100vh;
+}
+
+/* Layout helper: main content leaves space for sidebar */
+.main-app { margin-left: var(--sidebar-width); transition: margin-left .18s ease; min-height:100vh; padding-top:10px; }
+.page-wrap { max-width: var(--container-w); margin:28px auto; padding:0 20px; }
+
+/* Buttons (shared) */
+.btn {
+  display:inline-flex; align-items:center; justify-content:center;
+  gap:8px; border-radius:10px; padding:9px 12px; font-weight:600; cursor:pointer;
+  text-decoration:none; border:1px solid transparent; background:transparent; color:var(--text);
+}
+.btn.primary { background: rgba(37,99,235,0.95); color:#fff; border:none; box-shadow:0 6px 18px rgba(37,99,235,0.08); }
+.btn.neutral { border:1px solid rgba(15,23,42,0.06); background:transparent; color:var(--text); }
+.btn.ghost { border:1px dashed rgba(15,23,42,0.04); color:var(--muted); }
+
+/* TABLE base */
+.table { width:100%; border-collapse:collapse; }
+
+/* ========== FORM CONTROLS STANDARD (the real fix) ========== */
+/* Target common text-like controls only — avoid checkboxes/radios */
+input[type="text"],
+input[type="password"],
+input[type="search"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+input[type="date"],
+textarea,
+select
+{
+  -webkit-appearance:none;
+  -moz-appearance:none;
+  appearance:none;
+
+  display:block;
+  width:100%;
+  box-sizing:border-box;
+  background:var(--field-bg);
+  color:var(--text);
+  border:1px solid var(--field-border);
+  padding:var(--field-padding-y) var(--field-padding-x);
+  border-radius:var(--field-radius);
+  font-size:14px;
+  line-height:1.2;
+  min-height:var(--field-min-h);
+  outline: none;
+  box-shadow: var(--field-shadow);
+  transition: box-shadow .15s ease, border-color .12s ease;
+}
+
+/* textarea */
+textarea { min-height:110px; resize:vertical; padding-top:10px; padding-bottom:10px; }
+
+/* file input: keep native but tidy */
+input[type="file"] {
+  -webkit-appearance:none;
+  appearance:none;
+  padding:6px 10px;
+  border-radius: calc(var(--field-radius) - 2px);
+  border:1px solid rgba(15,23,42,0.06);
+  background:transparent;
+  width:auto;
+  min-height:initial;
+  box-shadow:none;
+}
+
+/* Focus / active */
+input:focus, textarea:focus, select:focus {
+  border-color: var(--field-border-focus);
+  box-shadow: 0 8px 24px rgba(37,99,235,0.06);
+  background: #fff;
+}
+
+/* Readonly/disabled visuals */
+input[readonly], input[disabled], textarea[readonly], textarea[disabled], select[disabled] {
+  background:#f3f6f9; border-color: rgba(15,23,42,0.04); color: rgba(15,23,42,0.6); cursor: default;
+}
+
+/* Remove spinners in WebKit */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button { -webkit-appearance:none; margin:0; }
+
+/* Remove search decorations */
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button { -webkit-appearance:none; }
+
+/* placeholder */
+::placeholder { color:#9aa3ad; opacity:1; }
+
+/* Small screen adjustments */
+@media (max-width:880px) {
+  .main-app { margin-left:0; }
+  input[type="text"], textarea, select { min-height:44px; }
+}
+
+/* Specificity helpers for your form container classes so they always stay full width */
+.dept-form input, .dept-form textarea, .dept-form select,
+.emp-form input, .emp-form textarea, .emp-form select,
+.search-row .search-input {
+  width:100%;
+}
+
+/* Accessibility: prefer :focus-visible (if supported) */
+:focus-visible { outline: none; }
+
+/* End of base.css */

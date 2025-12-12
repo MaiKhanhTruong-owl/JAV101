@@ -1,0 +1,227 @@
+/* department_Management.css — layout + form + table (base.css must be linked before this) */
+#id, #name {
+	display: block !important;
+	width: 100% !important;
+	box-sizing: border-box !important;
+	min-height: var(--ov-field-min-h) !important;
+	/* Visuals */
+	background: var(--ov-field-bg) !important;
+	color: inherit !important;
+	font-size: 14px !important;
+	line-height: 1.2 !important;
+	padding: var(--ov-field-padding-y) var(--ov-field-padding-x) !important;
+	/* Border: override inset/UA styling */
+	border-style: solid !important;
+	border-width: 1px !important;
+	border-color: var(--ov-field-border) !important;
+	border-radius: var(--ov-field-radius) !important;
+	/* Remove weird shadows from UA */
+	box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04) !important;
+	outline: none !important;
+	/* Smooth transitions */
+	transition: box-shadow .14s ease, border-color .12s ease !important;
+}
+
+:root {
+	--glass-radius: 14px;
+	--muted: #6b7280;
+	--glass-shadow: 0 8px 30px rgba(20, 30, 60, 0.06);
+	--container-w: 1200px;
+}
+
+* {
+	box-sizing: border-box;
+	font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+.main-app {
+	margin-left: var(--sidebar-width);
+	transition: margin-left .18s ease;
+	min-height: 100vh;
+	padding-top: 10px;
+}
+
+.page-wrap {
+	max-width: var(--container-w);
+	margin: 28px auto;
+	padding: 0 20px;
+}
+
+.top-header {
+	margin-bottom: 18px;
+}
+
+.top-header h1 {
+	margin: 0;
+	font-size: 24px;
+}
+
+.top-header .subtitle {
+	margin: 4px 0 0;
+	color: var(--muted);
+	font-size: 13px;
+}
+
+/* layout */
+.layout {
+	display: grid;
+	grid-template-columns: 420px 1fr;
+	gap: 24px;
+	align-items: start;
+}
+
+/* glass card */
+.card.glass {
+	background: linear-gradient(180deg, rgba(255, 255, 255, 0.55),
+		rgba(255, 255, 255, 0.42));
+	border-radius: var(--glass-radius);
+	padding: 18px;
+	box-shadow: var(--glass-shadow);
+	border: 1px solid rgba(255, 255, 255, 0.6);
+	backdrop-filter: blur(8px);
+}
+
+/* form */
+.form-card .card-head {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	margin-bottom: 8px;
+}
+
+.card-title {
+	margin: 0;
+	font-size: 18px;
+}
+
+.card-note {
+	font-size: 13px;
+	color: var(--muted);
+}
+
+.alert.error-pill {
+	background: rgba(254, 226, 226, 0.9);
+	color: #7f1d1d;
+	padding: 10px 12px;
+	border-radius: 8px;
+	margin: 10px 0;
+	font-weight: 600;
+}
+
+.dept-form .field {
+	margin-bottom: 12px;
+}
+
+.dept-form label {
+	display: block;
+	margin-bottom: 6px;
+	font-weight: 600;
+	color: #1f2937;
+	font-size: 13px;
+}
+
+/* buttons container */
+.form-actions {
+	display: flex;
+	gap: 10px;
+	margin-top: 12px;
+	align-items: center;
+}
+
+/* table card */
+.table-card {
+	padding: 14px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.table-head {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 12px;
+}
+
+/* search row */
+.search-row {
+	display: flex;
+	gap: 12px;
+	align-items: center;
+	width: 100%;
+}
+
+.search-input {
+	flex: 1;
+	padding: 10px 12px;
+	border-radius: 10px;
+	border: 1px solid rgba(15, 23, 42, 0.06);
+	background: rgba(255, 255, 255, 0.85);
+}
+
+/* table */
+.table-wrap {
+	overflow: auto;
+	border-radius: 12px;
+}
+
+.table {
+	width: 100%;
+	border-collapse: collapse;
+	min-width: 720px;
+}
+
+.table thead th {
+	text-align: left;
+	font-size: 13px;
+	color: #0b1220;
+	padding: 12px 14px;
+	border-bottom: 1px solid rgba(15, 23, 42, 0.05);
+	background: linear-gradient(180deg, rgba(255, 255, 255, 0.7),
+		rgba(255, 255, 255, 0.55));
+}
+
+.table tbody td {
+	padding: 12px 14px;
+	border-bottom: 1px solid rgba(15, 23, 42, 0.04);
+	vertical-align: middle;
+	font-size: 14px;
+	color: var(--text);
+}
+
+.col-id {
+	width: 110px;
+}
+
+.col-actions {
+	width: 160px;
+	text-align: center;
+}
+
+.table tbody tr:hover {
+	background: linear-gradient(90deg, rgba(15, 23, 42, 0.02),
+		rgba(15, 23, 42, 0.01));
+}
+
+.kicker {
+	font-weight: 700;
+	color: #0b1220;
+}
+
+.muted-col {
+	color: var(--muted);
+}
+
+/* responsive */
+@media ( max-width :980px) {
+	.layout {
+		grid-template-columns: 1fr;
+	}
+	.search-row {
+		flex-direction: column;
+		align-items: stretch;
+	}
+	.table {
+		min-width: 100%;
+	}
+}

@@ -1,0 +1,260 @@
+/* ====== FORCE RESET INPUT STYLES (paste đầu file index.css) ====== */
+/* index.css — dashboard and global page styles (imports base.css in JSP head before this) */
+:root {
+	--container-w: 1200px;
+	--card-radius: 14px;
+	--shadow: 0 10px 30px rgba(20, 30, 60, 0.05);
+	--muted: #6b7280;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+.main-app {
+	margin-left: var(--sidebar-width);
+	transition: margin-left .18s ease;
+	min-height: 100vh;
+	padding-top: 10px;
+}
+
+.page-wrap {
+	max-width: var(--container-w);
+	margin: 28px auto;
+	padding: 0 20px;
+}
+
+/* header */
+.top-header h1 {
+	margin: 0;
+	font-size: 24px;
+}
+
+.top-header .subtitle {
+	color: var(--muted);
+	margin-top: 6px;
+	font-size: 13px;
+}
+
+/* cards row for dashboard */
+.cards {
+	display: flex;
+	gap: 18px;
+	margin: 18px 0 12px;
+	flex-wrap: wrap;
+}
+
+.card {
+	background: #fff;
+	border-radius: var(--card-radius);
+	padding: 16px;
+	box-shadow: var(--shadow);
+}
+
+.card.stat {
+	width: 220px;
+	padding: 18px;
+	border-radius: 14px;
+}
+
+.stat-title {
+	font-weight: 700;
+	color: #374151;
+	font-size: 13px;
+}
+
+.stat-value {
+	font-size: 22px;
+	font-weight: 800;
+	margin-top: 8px;
+}
+
+.stat-desc {
+	color: var(--muted);
+	margin-top: 6px;
+	font-size: 13px;
+}
+
+/* panel */
+.panel.card {
+	padding: 18px;
+}
+
+/* Responsive */
+@media ( max-width :880px) {
+	.main-app {
+		margin-left: 0;
+		padding-top: 12px;
+	}
+	.cards {
+		flex-direction: column;
+	}
+}
+
+/* ensure browser default appearance removed */
+input, textarea, select, input[type="file"] {
+	-webkit-appearance: none !important;
+	-moz-appearance: none !important;
+	appearance: none !important;
+}
+
+/* base normalized field style (force overwrite) */
+input[type="text"], input[type="password"], input[type="date"], input[type="number"],
+	input[type="email"], input[type="search"], textarea, select, input[type="file"]
+	{
+	box-sizing: border-box !important;
+	background: rgba(255, 255, 255, 0.95) !important;
+	border: 1px solid rgba(15, 23, 42, 0.06) !important;
+	padding: 10px 12px !important;
+	border-radius: 10px !important;
+	font-size: 14px !important;
+	color: #0f172a !important;
+	outline: none !important;
+	box-shadow: none !important;
+	min-height: 40px !important;
+	line-height: 1.2 !important;
+	display: block !important;
+}
+
+/* textarea taller */
+textarea {
+	min-height: 110px !important;
+	padding-top: 10px !important;
+	padding-bottom: 10px !important;
+	resize: vertical !important;
+}
+
+/* file input - keep native button but match spacing */
+input[type="file"] {
+	padding: 6px 10px !important;
+	background: transparent !important;
+	border: 1px solid rgba(15, 23, 42, 0.04) !important;
+	border-radius: 8px !important;
+}
+
+/* focus state — subtle accent ring */
+input:focus, textarea:focus, select:focus {
+	border-color: rgba(37, 99, 235, 0.22) !important;
+	box-shadow: 0 6px 18px rgba(37, 99, 235, 0.06) !important;
+	outline: none !important;
+}
+
+/* remove weird inset/outline from some UAs */
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+	-webkit-appearance: none !important;
+	margin: 0 !important;
+}
+
+input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-search-cancel-button
+	{
+	-webkit-appearance: none !important;
+}
+
+/* placeholder color */
+::placeholder {
+	color: #9aa3ad !important;
+	opacity: 1 !important;
+}
+
+/* small screens adjust */
+@media ( max-width : 880px) {
+	input[type="text"], textarea, select {
+		min-height: 44px !important;
+	}
+}
+
+/* debug helper (remove later) — uncomment to visualize applied rule */
+/* input { outline: 1px solid rgba(255,0,0,0.06) !important; } */
+:root {
+	--sidebar-width: 260px;
+	--page-bg: linear-gradient(180deg, #f4f7fb, #eef4fb);
+	--container-w: 1200px;
+}
+
+* {
+	box-sizing: border-box;
+	font-family: Inter, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+	margin: 0;
+	min-height: 100vh;
+	background: var(--page-bg);
+	color: #0f172a;
+}
+
+/* ensure main content pushed right (avoid sidebar overlap) */
+.main-app {
+	margin-left: var(--sidebar-width);
+	transition: margin-left .18s ease;
+	min-height: 100vh;
+	padding-top: 10px;
+}
+
+/* container inside main */
+.page-wrap {
+	max-width: var(--container-w);
+	margin: 28px auto;
+	padding: 0 20px;
+}
+
+/* header */
+.top-header h1 {
+	margin: 0;
+	font-size: 24px;
+}
+
+.top-header .subtitle {
+	color: #6b7280;
+	margin-top: 6px;
+	font-size: 13px;
+}
+
+/* cards row for dashboard */
+.cards {
+	display: flex;
+	gap: 18px;
+	margin: 18px 0 12px;
+}
+
+.card.stat {
+	width: 220px;
+	padding: 18px;
+	border-radius: 14px;
+}
+
+.stat-title {
+	font-weight: 700;
+	color: #374151;
+	font-size: 13px;
+}
+
+.stat-value {
+	font-size: 22px;
+	font-weight: 800;
+	margin-top: 8px;
+}
+
+.stat-desc {
+	color: #6b7280;
+	margin-top: 6px;
+	font-size: 13px;
+}
+
+/* glass base common */
+.card {
+	background: #fff;
+	border-radius: 12px;
+	padding: 16px;
+	box-shadow: 0 10px 30px rgba(20, 30, 60, 0.05);
+}
+
+/* responsive: remove left margin when mobile */
+@media ( max-width :880px) {
+	.main-app {
+		margin-left: 0;
+	}
+	.cards {
+		flex-direction: column;
+	}
+}

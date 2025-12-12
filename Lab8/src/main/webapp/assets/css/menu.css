@@ -1,0 +1,151 @@
+/* menu.css */
+:root {
+	--sidebar-width: 260px;
+	--sidebar-bg: #0b1220;
+	--text-muted: #aab4c2;
+	--accent-soft: rgba(230, 240, 255, 0.95);
+}
+
+* {
+	box-sizing: border-box;
+}
+
+.sidebar {
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	width: var(--sidebar-width);
+	padding: 28px 18px;
+	background: var(--sidebar-bg);
+	color: #fff;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	z-index: 999;
+}
+
+.brand {
+	display: flex;
+	gap: 12px;
+	align-items: center;
+	margin-bottom: 8px;
+}
+
+.logo {
+	font-size: 22px;
+	width: 44px;
+	height: 44px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 10px;
+	background: rgba(255, 255, 255, 0.04);
+}
+
+.brand-text strong {
+	display: block;
+	font-size: 16px;
+}
+
+.brand-text small {
+	color: var(--text-muted);
+	display: block;
+	font-size: 11px;
+}
+
+.menu {
+	list-style: none;
+	padding: 0;
+	margin-top: 18px;
+	flex-grow: 1;
+}
+
+.menu-item {
+	margin-bottom: 8px;
+}
+
+.menu-item a {
+	display: block;
+	padding: 10px 12px;
+	border-radius: 10px;
+	color: #cfe6ff;
+	text-decoration: none;
+	font-weight: 600;
+	transition: all .12s;
+}
+
+.menu-item a:hover {
+	background: rgba(255, 255, 255, 0.03);
+	color: #fff;
+	transform: translateX(4px);
+}
+
+.menu-item.active a {
+	background: var(--accent-soft);
+	color: #0b1220;
+	transform: none;
+	box-shadow: none;
+}
+
+.sidebar-footer {
+	font-size: 13px;
+	color: var(--text-muted);
+}
+
+@media ( max-width :880px) {
+	.sidebar {
+		position: relative;
+		width: 100%;
+		flex-direction: row;
+		padding: 10px;
+		gap: 10px;
+	}
+	.brand-text small {
+		display: none;
+	}
+	.menu {
+		display: flex;
+		flex-direction: row;
+		gap: 8px;
+		overflow: auto;
+		margin-top: 0;
+	}
+	.sidebar-footer {
+		display: none;
+	}
+}
+
+/* language switch styles */
+.lang-switch {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	font-size: 13px;
+	color: var(--text-muted);
+	margin-top: 10px;
+}
+
+.lang-btn {
+	display: inline-block;
+	padding: 6px 10px;
+	border-radius: 8px;
+	text-decoration: none;
+	font-weight: 600;
+	color: #cfe6ff;
+	background: transparent;
+	transition: all .12s;
+	border: 1px solid transparent;
+}
+
+.lang-btn:hover {
+	background: rgba(255, 255, 255, 0.03);
+	color: #fff;
+	transform: translateY(-1px);
+}
+
+.lang-btn.active {
+	background: var(--accent-soft);
+	color: #0b1220;
+	border-color: rgba(0, 0, 0, 0.05);
+}

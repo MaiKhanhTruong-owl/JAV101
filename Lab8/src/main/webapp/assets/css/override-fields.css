@@ -1,0 +1,123 @@
+/* override-fields.css
+   Strong last-resort override for form controls across pages.
+   Paste this file and load it LAST in <head>. This intentionally uses very
+   specific selectors + !important to beat existing rules.
+*/
+
+/* design tokens local to this file (won't override other :root but used here) */
+:root {
+	--ov-field-bg: #ffffff;
+	--ov-field-border: rgba(15, 23, 42, 0.12);
+	--ov-field-border-focus: rgba(37, 99, 235, 0.28);
+	--ov-field-radius: 10px;
+	--ov-field-padding-y: 10px;
+	--ov-field-padding-x: 12px;
+	--ov-field-min-h: 40px;
+}
+
+/* Super-specific selector: any input inside page-wrap (your pages use .page-wrap) */
+html body .page-wrap form .dept-form input[type="text"], html body .page-wrap form .dept-form input[type="password"],
+	html body .page-wrap form .dept-form input[type="search"], html body .page-wrap form .dept-form input[type="email"],
+	html body .page-wrap form .dept-form input[type="tel"], html body .page-wrap form .dept-form input[type="number"],
+	html body .page-wrap form .dept-form input[type="date"], html body .page-wrap form .dept-form textarea,
+	html body .page-wrap form .dept-form select, html body .page-wrap form .emp-form input[type="text"],
+	html body .page-wrap form .emp-form input[type="password"], html body .page-wrap form .emp-form input[type="search"],
+	html body .page-wrap form .emp-form input[type="email"], html body .page-wrap form .emp-form input[type="tel"],
+	html body .page-wrap form .emp-form input[type="number"], html body .page-wrap form .emp-form input[type="date"],
+	html body .page-wrap form .emp-form textarea, html body .page-wrap form .emp-form select,
+	html body .page-wrap input[type="text"], html body .page-wrap input[type="password"],
+	html body .page-wrap input[type="search"], html body .page-wrap input[type="email"],
+	html body .page-wrap input[type="tel"], html body .page-wrap input[type="number"],
+	html body .page-wrap input[type="date"], html body .page-wrap textarea,
+	html body .page-wrap select {
+	/* Reset native appearance fully */
+	-webkit-appearance: none !important;
+	-moz-appearance: none !important;
+	appearance: none !important;
+	/* Layout & sizing */
+	display: block !important;
+	width: 100% !important;
+	box-sizing: border-box !important;
+	min-height: var(--ov-field-min-h) !important;
+	/* Visuals */
+	background: var(--ov-field-bg) !important;
+	color: inherit !important;
+	font-size: 14px !important;
+	line-height: 1.2 !important;
+	padding: var(--ov-field-padding-y) var(--ov-field-padding-x) !important;
+	/* Border: override inset/UA styling */
+	border-style: solid !important;
+	border-width: 1px !important;
+	border-color: var(--ov-field-border) !important;
+	border-radius: var(--ov-field-radius) !important;
+	/* Remove weird shadows from UA */
+	box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04) !important;
+	outline: none !important;
+	/* Smooth transitions */
+	transition: box-shadow .14s ease, border-color .12s ease !important;
+}
+
+/* Ensure file input stays usable but tidy */
+html body .page-wrap input[type="file"] {
+	-webkit-appearance: none !important;
+	appearance: none !important;
+	padding: 6px 10px !important;
+	border-radius: calc(var(--ov-field-radius)- 2px) !important;
+	border: 1px solid rgba(15, 23, 42, 0.06) !important;
+	background: transparent !important;
+	width: auto !important;
+	box-shadow: none !important;
+	min-height: initial !important;
+}
+
+/* Focus / active strong but subtle */
+html body .page-wrap input:focus, html body .page-wrap textarea:focus,
+	html body .page-wrap select:focus {
+	border-color: var(--ov-field-border-focus) !important;
+	box-shadow: 0 8px 24px rgba(37, 99, 235, 0.06) !important;
+	background: #ffffff !important;
+}
+
+/* Readonly / disabled look */
+html body .page-wrap input[readonly], html body .page-wrap textarea[readonly],
+	html body .page-wrap input[disabled], html body .page-wrap textarea[disabled],
+	html body .page-wrap select[disabled] {
+	background: #f3f6f9 !important;
+	border-color: rgba(15, 23, 42, 0.04) !important;
+	color: rgba(15, 23, 42, 0.6) !important;
+	cursor: default !important;
+}
+
+/* Remove numeric spinners (WebKit) */
+html body .page-wrap input[type="number"]::-webkit-inner-spin-button,
+	html body .page-wrap input[type="number"]::-webkit-outer-spin-button {
+	-webkit-appearance: none !important;
+	margin: 0 !important;
+}
+
+/* Placeholder color */
+html body .page-wrap ::placeholder {
+	color: #9aa3ad !important;
+	opacity: 1 !important;
+}
+
+/* Minor responsive tweak */
+@media ( max-width : 880px) {
+	html body .page-wrap input[type="text"], html body .page-wrap textarea,
+		html body .page-wrap select {
+		min-height: 44px !important;
+	}
+}
+
+/* Safety: ensure labels remain properly spaced (if other css removed margins) */
+html body .page-wrap .field {
+	margin-bottom: 12px !important;
+}
+
+html body .page-wrap .field label {
+	display: block !important;
+	margin-bottom: 6px !important;
+	font-weight: 600 !important;
+	color: #1f2937 !important;
+	font-size: 13px !important;
+}
